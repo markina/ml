@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ifmo.markina</groupId>
-    <artifactId>probabilistic_language</artifactId>
+    <artifactId>probabilistic_programming</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
