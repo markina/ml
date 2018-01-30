@@ -1,7 +1,9 @@
 package com.ifmo.markina;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
+import java.util.function.Function;
 
 public class Context {
     private final Map<String, Set<Integer>> variables = new HashMap<>();
@@ -68,6 +70,22 @@ public class Context {
             result.put(value, sum);
         }
         return result;
+    }
+
+    public void observe(Function<Map<String, Integer>, Boolean> function) {
+        BigDecimal sum = BigDecimal.ZERO;
+        for(Cell cell: cells) {
+            if(!function.apply(cell.getVariable())) {
+                cell.setP(BigDecimal.ZERO);
+            } else {
+                sum = sum.add(cell.getP());
+            }
+        }
+
+        BigDecimal mlt = BigDecimal.ONE.divide(sum, 2, RoundingMode.HALF_UP);
+        for(Cell cell: cells) {
+            cell.setP(cell.getP().multiply(mlt));
+        }
     }
 
     private void assertUniqueName(String name) {
