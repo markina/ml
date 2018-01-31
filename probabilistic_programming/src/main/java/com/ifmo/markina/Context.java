@@ -17,7 +17,6 @@ public class Context {
     }
 
     void defineMultinomial(String name, Map<Integer, BigDecimal> ps) {
-        assertSumOne(ps);
 
         assertUniqueName(name);
 
@@ -39,14 +38,14 @@ public class Context {
             ps.remove(lastP.getKey());
             for (Map.Entry<Integer, BigDecimal> p : ps.entrySet()) {
                 for (Cell cell : cells) {
-                    Cell newCell = new Cell(cell.getP().multiply(p.getValue()), cell.getVariable()); // TODO check multi
+                    Cell newCell = new Cell(cell.getP().multiply(p.getValue()), cell.getVariable());
                     newCell.addVariable(name, p.getKey());
                     newCells.add(newCell);
                 }
             }
 
             for (Cell cell : cells) {
-                Cell newCell = new Cell(cell.getP().multiply(lastP.getValue()), cell.getVariable()); // TODO check multi
+                Cell newCell = new Cell(cell.getP().multiply(lastP.getValue()), cell.getVariable());
                 newCell.addVariable(name, lastP.getKey());
                 newCells.add(newCell);
             }
@@ -89,14 +88,14 @@ public class Context {
     }
 
     private void assertUniqueName(String name) {
-        //TODO
-    }
-
-    private void assertSumOne(Map<Integer, BigDecimal> ps) {
-        // TODO
+        if(variables.containsKey(name)) {
+            throw new IllegalArgumentException("Name " + name + " is exist");
+        }
     }
 
     private void assertContains(String name) {
-        // TODO
+        if(!variables.containsKey(name)) {
+            throw new IllegalArgumentException("Name " + name + " is not exist");
+        }
     }
 }

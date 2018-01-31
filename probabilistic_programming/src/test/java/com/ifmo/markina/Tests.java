@@ -83,8 +83,64 @@ public class Tests {
         assertEqualsMap("Invalid \"d3\" probability", expectedD3, actualD3);
     }
 
+
+    @Test
+    public void honestCoinsTest() {
+        Context context = new Context();
+        context.defineFlip("d1", new BigDecimal("0.5"));
+        context.defineFlip("d2", new BigDecimal("0.5"));
+
+        // d1 || d2
+        context.observe(map -> (map.get("d1") + map.get("d2")) >= 1);
+
+
+        Map<Integer, BigDecimal> actualD1 = context.infer("d1");
+        Map<Integer, BigDecimal> expectedD1 = new HashMap<>();
+        expectedD1.put(0, new BigDecimal("0.33"));
+        expectedD1.put(1, new BigDecimal("0.67"));
+
+
+        Map<Integer, BigDecimal> actualD2 = context.infer("d2");
+        Map<Integer, BigDecimal> expectedD2 = new HashMap<>();
+        expectedD2.put(0, new BigDecimal("0.33"));
+        expectedD2.put(1, new BigDecimal("0.67"));
+
+        System.out.println(context.infer("d1"));
+        System.out.println(context.infer("d2"));
+        assertAboutEqualsMap("Invalid \"d1\" probability", expectedD1, actualD1);
+        assertAboutEqualsMap("Invalid \"d2\" probability", expectedD2, actualD2);
+    }
+
     @Test
     public void observeTest() {
+        Context context = new Context();
+        context.defineFlip("d1", new BigDecimal("0.3"));
+        context.defineFlip("d2", new BigDecimal("0.5"));
+
+        // d1 || d2
+        context.observe(map -> (map.get("d1") + map.get("d2")) >= 1);
+
+        Map<Integer, BigDecimal> actualD1 = context.infer("d1");
+        Map<Integer, BigDecimal> expectedD1 = new HashMap<>();
+        expectedD1.put(0, new BigDecimal("0.18"));
+        expectedD1.put(1, new BigDecimal("0.83"));
+
+
+        Map<Integer, BigDecimal> actualD2 = context.infer("d2");
+        Map<Integer, BigDecimal> expectedD2 = new HashMap<>();
+        expectedD2.put(0, new BigDecimal("0.41"));
+        expectedD2.put(1, new BigDecimal("0.59"));
+
+
+        System.out.println(context.infer("d1"));
+        System.out.println(context.infer("d2"));
+        assertAboutEqualsMap("Invalid \"d1\" probability", expectedD1, actualD1);
+        assertAboutEqualsMap("Invalid \"d2\" probability", expectedD2, actualD2);
+    }
+
+
+    @Test
+    public void observe23Test() {
         Context context = new Context();
         context.defineFlip("d1", new BigDecimal("0.3"));
 

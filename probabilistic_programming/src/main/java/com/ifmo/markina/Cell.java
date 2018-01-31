@@ -32,7 +32,9 @@ public class Cell {
     }
 
     public void addVariable(String name, Integer value) {
-        // TODO check if exist
+        if(variable.containsKey(name)) {
+            throw new IllegalArgumentException("Name " + name + " is exist");
+        }
         variable.put(name, value);
     }
 }
