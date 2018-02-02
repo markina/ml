@@ -7,7 +7,7 @@
 
 На выходе надо показать: результат.
 
-### Обучение на Space Invaders
+### Обученные модели и запуск
 
 Обученные модели взяты из репозитория: 
 https://github.com/tambetm/simple_dqn/tree/master/snapshots
@@ -26,6 +26,8 @@ https://github.com/tambetm/simple_dqn/tree/master/snapshots
 https://github.com/mgbellemare/Arcade-Learning-Environment
 
 В папке `./resources/video` можно найти скринвидео запусков.  
+
+### Обучение на Space Invaders
 
 Была выбрана модель - Space Invaders, поскольку есть достаточно много игр 
 с похожим геймплеем. 
