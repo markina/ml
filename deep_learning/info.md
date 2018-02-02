@@ -1,11 +1,13 @@
 # Эксперименты с Deep Leaning.
 
-Задача: Найти обученную модель и связать с какой-нибудь 
+### Задача 
+
+Найти обученную модель и связать с какой-нибудь 
 известной темой (например, с игрой Atari).
 
 На выходе надо показать: результат.
 
-## Результат
+### Обучение на Space Invaders
 
 Обученные модели взяты из репозитория: 
 https://github.com/tambetm/simple_dqn/tree/master/snapshots
@@ -35,6 +37,8 @@ https://github.com/mgbellemare/Arcade-Learning-Environment
 Оставалось 1-5 врагов из 36.  
 
 ![](./resources/scace_invaders_end.png) 
+
+### Запуски Demon Attack
 
 Далее на модели обученной на 200 эпохах на игре Space Invaders была запущена 
 игра Demon Attack. Одна достаточно сильно похожа, но враги появляются внезапно
@@ -93,6 +97,8 @@ https://github.com/mgbellemare/Arcade-Learning-Environment
 | 1 | 0 | 1 | 0 | 1 | 3 |
 | 0 | 1 | 1 | 1 | 0 | 2 |
 | 1 | 0 | 1 | 1 | 1 | 1 | 
+
+### Вывод 
 
 Прихожу к забавному выводу: после обучения на Space Invaders герой в Demon Attack
 играет примерно с таким же успехом, как враги в Demon Attack: стреляет, попадает 
